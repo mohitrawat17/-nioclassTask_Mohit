@@ -115,7 +115,7 @@ useEffect(() => {
 
   return (
     <MathJaxContext config={config}>
-    <div className="py-8 mt-16">
+    <div className="py-8 my-16">
 
       <div className="w-full h-full mx-auto bg-white p-6 rounded shadow-lg">
 
@@ -125,21 +125,21 @@ useEffect(() => {
 
       
         <div className="mb-4">
-          <p className="text-lg font-semibold"><span className=' text-xl text-red-700'>{`Question ${currentQuestionIndex+1} : `}</span><MathJax>{testQuestions}</MathJax></p>
+          <p className="text-lg font-semibold overflow-x-scroll"><span className='text-xl text-red-700'>{`Question ${currentQuestionIndex+1} : `}</span><MathJax>{testQuestions}</MathJax></p>
         </div>
         
 
 
         <div className="flex justify-between w-full  my-8">
           <button
-            className="bg-blue-500 text-white px-4 py-2 rounded mr-2"
+            className="max-sm:px-2 max-sm:py-1 bg-blue-500 text-white px-4 py-2 rounded mr-2"
             onClick={handlePreviousQuestion}
             disabled={currentQuestionIndex === 0}
           >
             Previous
           </button>
           <button
-            className="bg-blue-500 text-white px-4 py-2 rounded"
+            className="bg-blue-500 max-sm:px-2 max-sm:py-1 text-white px-4 py-2 rounded"
             onClick={handleNextQuestion}
             disabled={currentQuestionIndex === questions.length - 1}
           >
@@ -153,7 +153,7 @@ useEffect(() => {
         </div>
 
        <div  className='flex justify-end mb-4' >
-        <Link to="/finish" className="bg-red-500 text-white px-4 py-2 rounded" onClick={handleSubmitTest}>
+        <Link to="/finish" className= "max-sm:px-2 max-sm:py-1 bg-red-500 text-white px-4 py-2 rounded" onClick={handleSubmitTest}>
             Submit Test
         </Link>
 </div>

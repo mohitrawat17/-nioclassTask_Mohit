@@ -15,21 +15,26 @@ console.log(timeData);
   const formatTime = (timeInSeconds) => {
     const minutes = Math.floor((timeInSeconds % 3600) / 60);
     const seconds = timeInSeconds % 60;
+    return `${minutes.toString()} m, ${seconds.toString().padStart(2, '0')} s`;
+  };
+
+
+  const formatTime1 = (timeInSeconds) => {
+    const minutes = Math.floor((timeInSeconds % 3600) / 60);
+    const seconds = timeInSeconds % 60;
     return `${minutes.toString()} Minutes, ${seconds.toString().padStart(2, '0')} Seconds`;
   };
 
 
 
   return (
-    <div className='py-8'>
+
+    <div className='my-20 bg-white p-6 rounded shadow-lg"'>
 
 
-    <div className=' mx-auto bg-white p-6 rounded shadow-lg"'>
+      <h1 className='text-2xl max-sm:text-xl text-blue-600 font-semibold mb-4'>Thankyou for giving the test</h1>
 
-
-      <h1 className='text-2xl text-blue-600 font-semibold mb-4'>Thankyou for giving the test</h1>
-
-      <h2 className='my-7 text-lg font-semibold mr-3'>Your name : {name}</h2>
+      <h2 className='my-7 text-lg font-semibold mr-3'>Your name : <span className='max-sm:font-medium'>{name}</span></h2>
 
 
 
@@ -41,10 +46,12 @@ console.log(timeData);
 
 
 
-      <div className='my-7 flex '>
-        <h2 className='text-lg font-semibold mr-3'>Time taken on each Question :</h2>
-        <div className='mx-7'>
-        <h2 className='flex justify-center font-semibold mb-4'>Question ID</h2>
+      <div className='my-7 flex max-sm:flex-col'>
+        <h2 className='text-lg max-sm:text-base font-semibold mr-3 max-sm:mb-4'>Time taken on each Question :</h2>
+
+        <div className='flex'>
+        <div className='max-sm:mx-2 mx-7'>
+        <h2 className='max-sm:text-sm flex justify-center font-semibold mb-4'>Question ID</h2>
         {questions.map((question, index) => (
             <li className='my-2 list-none' key={index}>
               {question}
@@ -54,13 +61,14 @@ console.log(timeData);
 
 
         {/* time */}
-        <div className='mx-9'>
-        <h2 className='font-semibold mb-4 flex justify-center'>Time Taken</h2>
+        <div className='max-sm:mx-2 mx-7'>
+        <h2 className='font-semibold max-sm:text-sm mb-4 flex justify-center'>Time Taken</h2>
         {timeData.map((time, index) => (
             <li className='my-2 list-none flex justify-center' key={index}>
              {formatTime(time)}
             </li>
           ))}
+        </div>
         </div>
 
       </div>
@@ -82,15 +90,12 @@ console.log(timeData);
 
 
 
-      <div className='mt-7 text-lg font-semibold mr-3'>
-        Total time taken to complete the test : {formatTime(totalTime)}
+      <div className='max-sm:text-base mt-7 text-lg font-semibold mr-3'>
+        Total time taken to complete the test : <br/><span className='font-medium'>{formatTime1(totalTime)}</span>
       </div>
         
 
       </div>
-
-
-    </div>
   );
 }
 

@@ -1,3 +1,42 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*{
+    font-family: 'Noto Sans', sans-serif;
+}
+
+
+/* Styling for WebKit-based browsers (Chrome, Safari) */
+/* Vertical Scrollbar */
+::-webkit-scrollbar {
+    width: 5px; /* Width of the vertical scrollbar */
+    height: 5px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color of the scrollbar thumb */
+    border-radius: 6px; /* Rounded corners for the thumb */
+  }
+
+  
+  ::-webkit-scrollbar-thumb:horizontal {
+    background-color: #888; /* Color of the horizontal scrollbar thumb */
+    border-radius: 6px; /* Rounded corners for the thumb */
+  }
+  
+  /* Styling for Firefox */
+  /* Vertical Scrollbar */
+  /* You can customize styles for Firefox scrollbars */
+  /* For example:
+     scrollbar-color: #888 #ddd;
+     scrollbar-width: thin;
+  */
+  
+  /* Horizontal Scrollbar */
+  /* You can customize styles for Firefox horizontal scrollbars */
+  /* For example:
+     scrollbar-color: #888 #ddd;
+     scrollbar-width: thin;
+  */
+  
