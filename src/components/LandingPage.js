@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addName, addQuestions, removeQuestions } from '../redux/LandingPageSlice';
@@ -20,6 +20,7 @@ function LandingPage() {
   const dispatch=useDispatch();
   const questions=useSelector(store=>store.landingpage.questions)
   const userName=useSelector(store=>store.landingpage.name)
+ 
 
 
   // Function to handle checkbox selection
@@ -43,7 +44,7 @@ function LandingPage() {
     return totalTime;
   };
 
-  console.log(questions,userName);
+  
 
   return (
    
@@ -53,7 +54,7 @@ function LandingPage() {
 
         <h1 className="text-2xl max-sm:text-xl text-blue-600 font-semibold mb-4">Welcome to the Math Test at Neoclass</h1>
         <div className="flex mb-4">
-          <h2 className=" text-lg max-sm:text-base font-semibold mr-3">Enter your name : </h2>
+          <h2 className=" text-lg max-sm:text-base font-semibold mr-3 text-red-700">Enter your name : </h2>
           <input 
             type="text"
             placeholder='Name'
@@ -64,7 +65,7 @@ function LandingPage() {
         </div>
 
 
-        <h2 className="text-lg max-sm:text-base font-semibold mb-2">Select Questions for Your Test:</h2>
+        <h2 className="text-lg  text-red-700 max-sm:text-base font-semibold mb-2">Select Questions for Your Test:</h2>
         <ul>
           {questionIDs.map((questionID) => (
             <li key={questionID} className="mb-2">
@@ -80,17 +81,31 @@ function LandingPage() {
             </li>
           ))}
         </ul>
-        <p className="mt-4 text-lg max-sm:text-base font-semibold">
-          Total Test Time: <span>{calculateTotalTime()}</span> minutes
+        <p className="text-red-700 mt-4 text-lg max-sm:text-base font-semibold">
+          Total Test Time: <span className='font-medium text-black'>{calculateTotalTime()} minutes</span> 
         </p>
 
-        <Link to="/test" className="flex justify-end mt-4">
+        {
+          userName.length ?
+          <Link to="/test" className="flex justify-end mt-4">
           <button
-            className="bg-red-500 text-white px-4 py-2 rounded max-sm:px-2 max-sm:py-1"
+            className="bg-red-700 text-white px-4 py-2 rounded max-sm:px-2 max-sm:py-1"
           >
             Start Test
           </button>
         </Link>
+        :
+        <>
+        <div to="/" className="flex justify-end mt-4">
+          <button
+          onClick={()=>alert('Name is mandatory')}
+            className="bg-red-700 text-white px-4 py-2 rounded max-sm:px-2 max-sm:py-1"
+          >
+            Start Test
+          </button>
+        </div>
+        </>
+        }
 
         
       </div>

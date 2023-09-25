@@ -148,12 +148,11 @@ useEffect(() => {
         </div>
 
 
-        <div className="mb-4">
-          {/* Add navigation bar/panel here if needed */}
-        </div>
 
-       <div  className='flex justify-end mb-4' >
-        <Link to="/finish" className= "max-sm:px-2 max-sm:py-1 bg-red-500 text-white px-4 py-2 rounded" onClick={handleSubmitTest}>
+       <div  className='flex max-sm:flex-col-reverse justify-between mb-4' >
+        
+        <p className='text-red-600 max-sm:mt-4'>* If it is the last question then click on submit test</p>
+        <Link to="/finish" className= "max-sm:px-2 max-sm:py-1 bg-red-700 max-sm:w-[105px] text-white px-4 py-2 rounded" onClick={handleSubmitTest}>
             Submit Test
         </Link>
 </div>
