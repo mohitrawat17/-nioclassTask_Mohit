@@ -9,7 +9,6 @@ function FinishPage() {
   const timeData=useSelector(store=>store.testpage.questionTimer)
   const totalTime=useSelector(store=>store.testpage.totalTime)
 
-console.log(timeData);
 
   // Function to format time in HH:MM:SS
   const formatTime = (timeInSeconds) => {

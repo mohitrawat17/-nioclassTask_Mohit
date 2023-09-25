@@ -64,7 +64,7 @@ useEffect(() => {
 
 
 
-// console.log(timer,currentQuestionIndex);
+
 
   const dispatch=useDispatch();
 
@@ -103,7 +103,7 @@ useEffect(() => {
     loader: { load: ["input/asciimath"] },
     asciimath: {
       delimiters: [['$','$'], ['`','`']]
-    }
+    },
 };
 
 
