@@ -13,7 +13,7 @@ const TestPageSlice=createSlice({
           state.questionIndex=action.payload
         },
         addQuestionTimer:(state,action)=>{
-            if(state.questionTimer.length ==0 || state.questionIndex >= state.questionTimer.length){
+            if(state.questionTimer.length === 0 || state.questionIndex >= state.questionTimer.length){
                 state.questionTimer.push(action.payload);
             }
             else{

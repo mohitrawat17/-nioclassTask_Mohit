@@ -11,7 +11,7 @@ import {
 function TestPage() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const questions = useSelector((store) => store.landingpage.questions);
-  const [testQuestions, setTestQuestions] = useState("");
+  const [testQuestions, setTestQuestions] = useState([]);
   const [totalTime, setTotalTime] = useState(0);
 
   // total time for the test
@@ -37,6 +37,7 @@ function TestPage() {
   };
 
   useEffect(() => {
+    console.log(questions[currentQuestionIndex])
     getQuestions(questions[currentQuestionIndex]);
   }, [currentQuestionIndex]);
 
@@ -52,6 +53,7 @@ function TestPage() {
       .padStart(2, "0")}`;
   };
 
+
   useEffect(() => {
     // Start the timer when the component mounts
     const interval = setInterval(() => {
@@ -65,16 +67,13 @@ function TestPage() {
   const dispatch = useDispatch();
 
   const handleNextQuestion = () => {
-    // Disable the button if the current question is already the last question
-    if (currentQuestionIndex === questions.length - 1) {
-      return;
-    }
-
     // Move to the next question if available
-    setCurrentQuestionIndex(currentQuestionIndex + 1);
-    dispatch(addQuestionTimer(timer));
-    dispatch(addIndex(currentQuestionIndex + 1));
-    setTimer(0);
+    if (currentQuestionIndex < questions.length) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+      dispatch(addQuestionTimer(timer));
+      dispatch(addIndex(currentQuestionIndex + 1));
+      setTimer(0);
+    }
   };
 
   const handlePreviousQuestion = () => {
@@ -93,20 +92,17 @@ function TestPage() {
     dispatch(addQuestionTimer(timer)); //for last question
     dispatch(addTotalTime(totalTime));
   };
-  
+  console.log(testQuestions);
+
   const config = {
     loader: { load: ["input/asciimath"] },
     asciimath: {
       delimiters: [
         ["$", "$"],
         ["`", "`"],
-        ["$", "$"],
-        ["\\\\(", "\\\\)"],
       ],
     },
   };
-
-  console.log(testQuestions);
 
   return (
     <MathJaxContext config={config}>
@@ -123,7 +119,7 @@ function TestPage() {
               <span className="text-xl text-red-700">{`Question ${
                 currentQuestionIndex + 1
               } : `}</span>
-              {testQuestions && <MathJax>{testQuestions}</MathJax>}
+              <MathJax key={testQuestions}>{testQuestions && testQuestions}</MathJax>
             </p>
           </div>
 

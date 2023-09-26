@@ -16,7 +16,7 @@ const LandingPageSlice=createSlice({
          },
          removeQuestions:(state,action)=>{
             state.questions=state.questions.filter((items)=>{
-                return items != action.payload
+                return items !== action.payload
             })
          }
 
