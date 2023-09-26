@@ -106,6 +106,8 @@ function TestPage() {
     },
   };
 
+  console.log(testQuestions);
+
   return (
     <MathJaxContext config={config}>
       <div className="py-8 my-16">
